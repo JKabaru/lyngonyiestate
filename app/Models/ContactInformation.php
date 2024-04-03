@@ -13,7 +13,7 @@ class ContactInformation extends Model
     use HasFactory;
 
 
-    protected $primaryKey = 'contactInformationID';
+    protected $primaryKey = 'contactInformation';
 
     protected $guarded = [];
 

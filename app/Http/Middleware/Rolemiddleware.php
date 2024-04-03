@@ -15,11 +15,16 @@ class Rolemiddleware
      */
     public function handle(Request $request, Closure $next, $role): Response
     {
+        
         // if ($user->role->roleName === 'admin') {
-        if ($request->user()->role->roleName !== $role)
+        // dd($request->user());
+        // $request->user()->roles->contains('name', $role)
+        if (!$request->user()->role === $role)
         {
             return redirect('dashboard');
         }
         return $next($request);
     }
 }
+
+

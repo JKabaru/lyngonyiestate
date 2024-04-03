@@ -13,12 +13,19 @@ class Role extends Model
     use HasApiTokens, HasFactory, Notifiable;
 
 
-    protected $primaryKey = 'roleID';
+    protected $primaryKey = 'role_id';
 
     protected $guarded = [];
 
-    public function department()
+    // public function department()
+    // {
+    //     return $this->belongsTo(Department::class, 'departmentID');
+    // }
+
+    public function users()
     {
-        return $this->belongsTo(Department::class, 'departmentID');
+        return $this->belongsToMany(User::class, 'permanent_worker_roles', 'role_id', 'permanent_worker_id');
     }
+    
+    
 }

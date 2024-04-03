@@ -4,12 +4,11 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Database\Seeders\PermanentEmployeesSeeder;
-use Database\Seeders\AddressesSeeder;
-use Database\Seeders\ContactInformationSeeder;
+
+use Database\Seeders\UsersSeeder;
 use Database\Seeders\DepartmentsSeeder;
 use Database\Seeders\RolesSeeder;
-use Database\Seeders\EmergencyContactsSeeder;
+use Database\Seeders\CasualWorkersSeeder;
 
 
 
@@ -24,12 +23,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call(PermanentEmployeesSeeder::class);
-        $this->call(AddressesSeeder::class);
-        $this->call(ContactInformationSeeder::class);
+        
+        $this->call(CasualWorkersSeeder::class);
+        $this->call(UsersSeeder::class);
         $this->call(DepartmentsSeeder::class);
-        $this->call(RolesSeeder::class);
-        $this->call(EmergencyContactsSeeder::class);
+        // $this->call(RolesSeeder::class);
+        
         // \App\Models\Employee::factory(8)->create();
         // \App\Models\Address::factory(10)->create();
         // \App\Models\ContactInformation::factory(10)->create();

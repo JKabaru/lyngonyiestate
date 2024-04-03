@@ -13,11 +13,11 @@ class CreateRolesTable extends Migration
      */
     public function up()
     {
-        Schema::create('roles', function (Blueprint $table) {
-            $table->id('roleID');
-            $table->string('roleName', 100);
-            $table->unsignedBigInteger('departmentID')->nullable();
-            $table->text('responsibilities')->nullable();
+        Schema::create('roles2', function (Blueprint $table) {
+            $table->id('role_id');
+            $table->string('roleName');
+            $table->text('description')->nullable();
+            // Add additional fields as needed
             $table->timestamps();
 
             // $table->foreign('DepartmentID')->references('DepartmentID')->on('departments')->onDelete('cascade');
@@ -31,6 +31,6 @@ class CreateRolesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('roles2');
     }
 }

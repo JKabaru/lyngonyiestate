@@ -33,18 +33,24 @@ class AuthenticatedSessionController extends Controller
         $user = $request->user();
 
         $url = '';
-
+        // $roleNames = $user->roles->pluck('roleName')->toArray();
         // Check if the user's role name is "admin"
-        if ($user->role->roleName === 'admin') {
+        // $user->role->roleName === 'admin'
+        if ($user->role === 'admin') {
             $url = "admin/dashboard";
-        } elseif ($user->role->roleName === 'manager') {
-            $url = "manager/dashboard";
-        }else
+        } 
+        else
         {
             $url = "/dashboard";
         }
 
-        return redirect()->intended($url);
+        $notification = array(
+            'message' => 'Logged in Successfully ',
+            'alert-type' => 'info'
+        );
+        
+
+        return redirect()->intended($url)->with($notification);
     }
 
     /**

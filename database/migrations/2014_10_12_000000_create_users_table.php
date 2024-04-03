@@ -12,31 +12,25 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id('employeeID');
-            $table->string('iDNumber')->nullable();
-            $table->string('accountNo')->nullable();
-            // $table->string('firstName');
+            $table->id('employeeId');
             $table->string('name');
+            $table->string('idNumber')->nullable();
+            $table->string('accountNo')->nullable();
             $table->date('dateOfBirth')->nullable();
             $table->enum('gender', ['male', 'female', 'other'])->nullable();
             $table->enum('status', ['active', 'onLeave', 'inactive'])->default('active');
-            $table->unsignedBigInteger('contactInformationID')->nullable();
+            $table->string('contactInformation')->nullable();
             $table->string('email')->nullable()->unique();
+            $table->enum('role', ['admin', 'user', 'other'])->nullable();
             $table->date('email_verified_at')->nullable();
             $table->string('photo')->nullable();
             $table->string('password')->nullable();
-            $table->unsignedBigInteger('addressID')->nullable();
-            $table->unsignedBigInteger('departmentID')->nullable();
-            $table->unsignedBigInteger('roleID')->nullable();
+            $table->string('address')->nullable();
             $table->date('hireDate')->nullable();
-            $table->decimal('salary', 10, 2)->nullable();
             $table->rememberToken()->nullable();
             $table->timestamps();
 
-            // $table->foreign('ContactInformationID')->references('ContactInformationID')->on('ContactInformation')->onDelete('set null');
-            // $table->foreign('AddressID')->references('AddressID')->on('Addresses')->onDelete('set null');
-            // $table->foreign('DepartmentID')->references('DepartmentID')->on('Departments')->onDelete('set null');
-            // $table->foreign('RoleID')->references('RoleID')->on('Roles')->onDelete('set null');
+           
         });
     }
 
@@ -45,6 +39,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('employees');
+        Schema::dropIfExists('users');
     }
 };

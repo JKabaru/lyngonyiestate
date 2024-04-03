@@ -14,22 +14,27 @@ class DepartmentsSeeder extends Seeder
      */
     public function run()
     {
-        // Define the data to be seeded
-        $departments = [
+        DB::table('departments')->insert([
             [
-                'departmentName' => 'Piggery',
-                // 'ManagerID' => 1, // Assuming a manager with ID 1 exists
-                'description' => 'Piggery Department',
+                'departmentName' => 'Farm 1',
+                'description' => 'Description of Farm 1',
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
-                'departmentName' => 'Poultry',
-                // 'ManagerID' => 2, // Assuming a manager with ID 2 exists
-                'description' => 'Poultry Department',
+                'departmentName' => 'Farm 2',
+                'description' => 'Description of Farm 2',
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
-            // Add more departments as needed
-        ];
+            [
+                'departmentName' => 'Farm 3',
+                'description' => 'Description of Farm 3',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+        ]);
 
-        // Insert the data into the departments table
-        DB::table('departments')->insert($departments);
+        // Add more sample data as needed
     }
 }

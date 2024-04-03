@@ -31,6 +31,7 @@ class LoginRequest extends FormRequest
         return [
             'login' => ['required', 'string'],
             'password' => ['required', 'string'],
+            
         ];
     }
 
@@ -44,7 +45,7 @@ class LoginRequest extends FormRequest
         $this->ensureIsNotRateLimited();
 
         $user = User::where('email', $this->login)
-                     ->orWhere('iDNumber', $this->login)
+                     ->orWhere('idNumber', $this->login)
                      ->first();
 
         if (!$user || !Hash::check($this->password, $user->password) ) {

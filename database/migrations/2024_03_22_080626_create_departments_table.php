@@ -14,10 +14,11 @@ class CreateDepartmentsTable extends Migration
     public function up()
     {
         Schema::create('departments', function (Blueprint $table) {
-            $table->id('departmentID');
-            $table->string('departmentName', 100);
-            $table->unsignedBigInteger('managerID')->nullable();
+            $table->id('department_id');
+            $table->string('departmentName');
+            $table->enum('status', ['active', 'inactive'])->default('active');
             $table->text('description')->nullable();
+            // Add additional fields as needed
             $table->timestamps();
 
             // $table->foreign('ManagerID')->references('id')->on('employees')->onDelete('set null');

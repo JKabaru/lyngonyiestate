@@ -13,13 +13,24 @@ class Department extends Model
     use  HasFactory;
 
 
-    protected $primaryKey = 'departmentID';
+    protected $primaryKey = 'department_id';
 
     protected $guarded = [];
 
 
-    public function manager()
+    
+
+    public function users()
     {
-        return $this->belongsTo(Employee::class, 'managerID');
+        return $this->belongsToMany(User::class, 'permanent_worker_departments', 'department_id', 'permanent_worker_id');
     }
+
+    public function casuals()
+    {
+        return $this->belongsToMany(CasualWorker::class, 'department_user', 'department_id', 'casualId');
+    }
+
+
+
+    
 }

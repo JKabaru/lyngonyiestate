@@ -14,22 +14,21 @@ class RolesSeeder extends Seeder
      */
     public function run()
     {
-        // Define the data to be seeded
-        $roles = [
+        DB::table('roles')->insert([
             [
                 'roleName' => 'Manager',
-                // 'DepartmentID' => 1, // Assuming a department with ID 1 exists
-                'responsibilities' => 'Oversee overall operations',
+                'description' => 'Description of Manager role',
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'roleName' => 'Farm Manager',
-                // 'DepartmentID' => 2, // Assuming a department with ID 2 exists
-                'responsibilities' => 'Oversee department operations',
+                'description' => 'Description of Farm Manager role',
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
-            // Add more roles as needed
-        ];
-
-        // Insert the data into the roles table
-        DB::table('roles')->insert($roles);
+            // Add more sample data as needed
+        ]);
     }
 }
+

@@ -40,7 +40,7 @@ class Employee extends Model
 
     public function contactInformation()
     {
-        return $this->belongsTo(ContactInformation::class, 'contactInformationID');
+        return $this->belongsTo(ContactInformation::class, 'contactInformation');
     }
 
     public function address()
